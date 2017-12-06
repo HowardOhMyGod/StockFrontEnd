@@ -64,19 +64,28 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  $colorGray: #2B2B2B
+  $colorLightGray: #3B3838
+  $colorYellow: #FFC000
+  $colorWhite: rgba(white, 0.7)
   *
     // border: solid 1px black
     position: relative
+  .techResult
+    color: white
+    height: 100%
   .title
     text-align: center
     font-size: 18px
     font-weight: 900
     margin-bottom: 10px
+    color: $colorYellow
+    letter-spacing: 2px
   .overview, .trend
     .indexList
       width: 100%
-      border: solid 1px black
-      padding: 5px 10px
+      border: solid 1px $colorWhite
+      padding: 15px 10px
       margin-bottom: 15px
   .index
     display: flex
@@ -85,22 +94,22 @@ export default {
       margin-right: 10px
   .row
     display: flex
-    border-bottom: solid 1px black
-    padding: 3px 0px
+    border-bottom: solid 1px $colorWhite
+    padding: 5px 0px
   .overview, .stockTable, .trend
     margin-bottom: 15px
   .stockList
-    border-bottom: solid 1px black
+    border-bottom: solid 1px $colorWhite
     padding: 5px 10px
     .roww
       display: flex
       .s
         flex: 1
   .stockList:nth-child(1)
-    border-top: solid 1px black
+    border-top: solid 1px $colorWhite
   .stockBlock
-    border-left: solid 1px black
-    border-right: solid 1px black
+    border-left: solid 1px $colorWhite
+    border-right: solid 1px $colorWhite
   .graph
     .img
       width: 100%

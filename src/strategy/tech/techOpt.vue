@@ -42,29 +42,37 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  $colorGray: #2B2B2B
+  $colorLightGray: #3B3838
+  $colorYellow: #FFC000
+  $colorWhite: rgba(white, 0.7)
   *
     // border: solid 1px black
     position: relative
   .techOpt
-    height: 300px
+    height: 100%
     width: 100%
+    color: white
     .started
       text-align: center
-      border: solid 1px black
-      padding: 3px 5px
+      border: solid 1px $colorYellow
+      padding: 6px 5px
       margin-top: 20px
       cursor: pointer
       font-weight: 700
+      color: $colorYellow
     .title
       font-weight: 700
       font-size: 16px
       text-align: center
       margin-bottom: 10px
+      color: $colorYellow
+      letter-spacing: 2px
     .options
       .option
-        padding: 6px 5px
+        padding: 10px 8px
         margin-bottom: 10px
-        border: solid 1px black
+        border: solid 1px $colorWhite
         .img
           width: 50px
           height: 50px
@@ -80,7 +88,12 @@ export default {
           margin-bottom: 6px
           font-size: 14px
           font-weight: 700
+          letter-spacing: 2px
         select
           width: 100%
           padding: 2px 10px
+          background: rgba(#7a7a7a, 0.5)
+          option
+            background-color: $colorLightGray
+            // color: $colorLightGray
 </style>

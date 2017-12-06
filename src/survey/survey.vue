@@ -7,7 +7,7 @@
         @click="clickOpt(idx, idx2)",
         :class="{isClick: isClick(que, idx2)}") {{opt}}
     .sumit.warn(v-if="ansLack != -1") 請回答"{{questionList[ansLack].title}}"
-    .sumit(@click="sumitAns()") 提交回答 {{totalScore}}
+    .sumit#correct(@click="sumitAns()") 提交回答
 </template>
 
 <script>
@@ -105,34 +105,48 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  $colorGray: #2B2B2B
+  $colorLightGray: #3B3838
+  $colorYellow: #FFC000
+  $colorWhite: rgba(white, 0.7)
   *
     // border: solid 1px black
     position: relative
   .surveyList
+    color: white
+    height: 100%
+    #correct
+      border: solid 1px $colorYellow
+      color: $colorYellow
     .sumit
       font-size: 18px
       font-weight: 700
-      border: solid 1px black
+      border: solid 1px $colorWhite
       text-align: center
       padding: 3px 5px
       margin-bottom: 15px
     .questionBlock
       margin-bottom: 15px
-      border: solid 1px black
+      border: solid 1px $colorWhite
       padding: 10px 10px
       border-radius: 3px
       .question
         font-size: 16px
         font-weight: 700
+        letter-spacing: 2px
       .answers
         margin-top: 10px
         .ans
-          font-size: 13px
+          font-size: 14px
           margin-bottom: 5px
-          padding: 3px 10px
-          border: solid 1px black
+          padding: 8px 10px
+          border: solid 1px $colorWhite
           letter-spacing: 1px
           cursor: pointer
+          transition:  0.2s
         .ans.isClick
-          background: yellow
+          background-color: rgba(#7a7a7a, 0.5)
+          color: white
+          font-weight: 800
+          transform: scale(1.03)
 </style>

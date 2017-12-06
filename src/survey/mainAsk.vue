@@ -36,27 +36,31 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  $colorYellow: #FFC000
+  $colorWhite: rgba(white, 0.7)
   *
     // border: solid 1px black
     position: relative
     font-family: 微軟正黑體
   .asking
     padding: 10px
-    border: solid 1px black
+    border: solid 1px white
     .levelSelc
       h3
         font-weight: 700
         text-align: center
         padding-bottom: 8px
-        border-bottom: solid 2px black
+        border-bottom: solid 2px $colorYellow
         font-size: 18px
+        color: white
       .level
         text-align: center
         padding: 3px 10px
-        border: solid 1px black
+        border: solid 1px $colorWhite
         font-size: 16px
         margin-bottom: 10px
         cursor: pointer
+        color: white
 
     .question
       padding: 5px 0px
@@ -64,8 +68,9 @@ export default {
       text-align: center
       margin-bottom: 20px
       font-weight: 700
-      border-bottom: solid 2px black
+      border-bottom: solid 2px $colorYellow
       letter-spacing: 1px
+      color: white
     .answer
       .ansblock
         display: inline-block
@@ -76,9 +81,10 @@ export default {
           display: inline-block
           padding: 5px 20px
           vertical-align: top
-          border: solid 1px black
+          border: solid 1px white
           border-radius: 3px
           font-weight: 700
+          color: white
         .yes
           margin-right: 20px
 </style>

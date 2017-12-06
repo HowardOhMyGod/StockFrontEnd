@@ -21,18 +21,23 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  $colorGray: #2B2B2B
+  $colorLightGray: #3B3838
+  $colorYellow: #FFC000
+  $colorWhite: rgba(white, 0.7)
   *
     // border: solid 1px black
     font-family: 微軟正黑體
   .chooseStra
-    border: solid 1px black
+    border: solid 1px $colorWhite
     padding: 0px 5px
     border-radius: 3px
+    color: white
     h4
       font-size: 18px
       text-align: center
       padding: 5px 5px
-      border-bottom: solid 2px black
+      border-bottom: solid 2px $colorYellow
     .selectBlock
       .opt
         text-align: center
@@ -40,7 +45,8 @@ export default {
         padding: 5px 10px
         font-weight: 800
         font-size: 18px
-        border: solid 1px black
         cursor: pointer
+        background-color: rgba(#7a7a7a, 0.5)
+        color: white
 
 </style>

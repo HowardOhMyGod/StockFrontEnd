@@ -33,12 +33,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  $colorGray: #2B2B2B
+  $colorLightGray: #3B3838
+  $colorYellow: #FFC000
+  $colorWhite: rgba(white, 0.7)
   *
     // border: solid 1px black
   .surveyResult
-    border: solid 1px black
+    border: solid 1px $colorWhite
     padding: 5px 10px
     border-radius: 3px
+    color: white
     .img
       width: 100%
       height: 300px
@@ -47,19 +52,20 @@ export default {
     .started
       font-weight: 700
       padding: 5px 10px
-      border: solid 1px black
+      border: solid 1px $colorYellow
       text-align: center
       margin-top: 20px
       margin-bottom: 10px
       cursor: pointer
+      color: $colorYellow
     .resultBlock
       h4
         font-size: 18px
         text-align: center
-        border: solid 1px black
         padding: 3px 5px
       .level
         font-size: 22px
         text-align: center
         font-weight: 900
+        color: $colorYellow
 </style>

@@ -19,23 +19,31 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+  $colorGray: #2B2B2B
+  $colorLightGray: #3B3838
+  $colorYellow: #FFC000
+  $colorWhite: rgba(white, 0.7)
+
   *
     // border: solid 1px black
   .techIntro
+    color: white
+    height: 100%
     .started
       margin-top: 15px
       text-align: center
       padding: 5px 10px
       font-weight: 700
       letter-spacing: 2px
-      border: solid 1px black
+      border: solid 1px $colorYellow
       margin-bottom: 20px
       cursor: pointer
+      color: $colorYellow
     .name
       text-align: center
       font-weight: 700
       padding-bottom: 8px
-      border-bottom: solid 1px black
+      border-bottom: solid 2px $colorYellow
     .img
       width: 100%
       height: 300px
@@ -45,11 +53,11 @@ export default {
         text-align: center
         margin-bottom: 10px
         padding-bottom: 8px
-        border-bottom: solid 1px black
+        border-bottom: solid 2px $colorYellow
         font-size: 16px
       .text
         padding: 5px 8px
-        border: solid 1px black
+        border: solid 1px $colorWhite
         border-radius: 3px
         letter-spacing: 1px
         font-size: 16px
