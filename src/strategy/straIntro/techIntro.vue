@@ -5,11 +5,16 @@
     .des
       .title 概念介紹
       .text 以下用"多頭市場:收盤價>5日均線>10日均線" 舉例說明. 從下圖中可看出，. 台泥(1101)在6/29起，收盤價>5日均線>10日均線，出現多頭市場。 當5日均線突破10均線時，. 那個交點稱為黃金交叉，表示應買進該檔個股。
-    .started 開始投資!
+    .started(@click="toTechOpt()") 開始投資!
 </template>
 
 <script>
 export default {
+  methods: {
+    toTechOpt(){
+      this.$router.push({path: '/tech/options'})
+    }
+  }
 }
 </script>
 
@@ -25,6 +30,7 @@ export default {
       letter-spacing: 2px
       border: solid 1px black
       margin-bottom: 20px
+      cursor: pointer
     .name
       text-align: center
       font-weight: 700

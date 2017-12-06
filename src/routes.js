@@ -3,6 +3,8 @@ import Survey from './survey/survey.vue'
 import surveyResult from './survey/surveyResult.vue'
 import Strategy from './strategy/chooseStra.vue'
 import TechIntro from './strategy/straIntro/techIntro.vue'
+import TechOpt from './strategy/tech/techOpt.vue'
+import TechResult from './strategy/tech/techResult.vue'
 
 export const routes = [{
   'path': '',
@@ -16,7 +18,7 @@ export const routes = [{
   'path': '/survey',
   component: Survey
 },{
-  'path': '/surveyResult/:score',
+  'path': '/surveyResult/:level',
   component: surveyResult
 },{
   'path': '/strategy',
@@ -24,4 +26,10 @@ export const routes = [{
 },{
   'path': '/strategyIntro/techIntro',
   component: TechIntro
+},{
+  path: '/tech/options',
+  component: TechOpt
+},{
+  path: '/tech/result',
+  component: TechResult
 }]

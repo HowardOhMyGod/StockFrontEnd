@@ -15,12 +15,12 @@ export default {
     }
   },
   created(){
-    let score = this.$route.params.score
-    if(score < 8){
+    let level = this.$route.params.level
+    if(level == 'low'){
       this.level = '低'
-    } else if (score >=8 && score < 16){
+    } else if (level == 'mid'){
       this.level = '中'
-    } else {
+    } else if (level == 'high') {
       this.level = '高'
     }
   },

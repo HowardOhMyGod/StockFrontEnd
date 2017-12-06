@@ -63,6 +63,18 @@ export default {
         return false
       }
     },
+    scoreToLevel(score){
+      let level = ''
+      if(score < 8){
+        level = 'low'
+      } else if (score >=8 && score < 16){
+        level = 'mid'
+      } else {
+        level = 'high'
+      }
+
+      return level
+    },
     sumitAns(){
       let isClear = false
       this.totalScore = 0
@@ -82,7 +94,9 @@ export default {
 
       if(!isClear){
         this.ansLack = -1
-        this.$router.push({path: `/surveyResult/${this.totalScore}`})
+
+        let level = this.scoreToLevel(this.totalScore)
+        this.$router.push({path: `/surveyResult/${level}`})
         window.scrollTo(0, 0)
       }
     }

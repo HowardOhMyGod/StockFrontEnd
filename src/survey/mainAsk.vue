@@ -5,17 +5,31 @@
       .ansblock
         .yes.btn(@click="answer(1)") 有
         .no.btn(@click="answer(0)") 無
+    .levelSelc(v-if="doneBefore")
+      h3.title 你的風險承受等級為?
+      .high.level(@click="toSurveyResult('high')") 高
+      .mid.level(@click="toSurveyResult('mid')") 中
+      .low.level(@click="toSurveyResult('low')") 低
 </template>
 
 <script>
 export default {
+  data(){
+    return {
+      doneBefore: false
+    }
+  },
   methods: {
     answer(status){
       if(status == '1'){
-
+        this.doneBefore = true
       } else {
+        this.doneBefore = false
         this.$router.push({path: '/survey'})
       }
+    },
+    toSurveyResult(level){
+      this.$router.push({path: `/surveyResult/${level}`})
     }
   }
 }
@@ -23,12 +37,27 @@ export default {
 
 <style lang="sass" scoped>
   *
-    border: solid 1px black
+    // border: solid 1px black
     position: relative
     font-family: 微軟正黑體
   .asking
     padding: 10px
     border: solid 1px black
+    .levelSelc
+      h3
+        font-weight: 700
+        text-align: center
+        padding-bottom: 8px
+        border-bottom: solid 2px black
+        font-size: 18px
+      .level
+        text-align: center
+        padding: 3px 10px
+        border: solid 1px black
+        font-size: 16px
+        margin-bottom: 10px
+        cursor: pointer
+
     .question
       padding: 5px 0px
       font-size: 16px
