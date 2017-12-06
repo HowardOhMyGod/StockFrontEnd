@@ -4,16 +4,31 @@
       .topbar.col-sm-12 股票推薦神器
     .content
       router-view
+    .space
+    .downMenu
+      .menu(@click="navigate(1)") 首頁
+      .menu(@click="navigate(2)") 策略
 </template>
 
 <script>
   export default {
+    methods: {
+      navigate(where){
+        if (where == 1){
+          this.$router.push({path: '/main'})
+        } else {
+          this.$router.push({path: '/strategy'})
+        }
+      }
+    }
   }
 </script>
 
 <style lang="sass" scoped>
   $colorGray: #2B2B2B
   $colorLightGray: #3B3838
+  $colorYellow: #FFC000
+  $colorWhite: rgba(white, 0.7)
   *
     // border: solid 1px black
     position: relative
@@ -31,6 +46,22 @@
     height: 100%
     width: 100%
     background-color: $colorLightGray
+    .space
+      height: 55px
+    .downMenu
+      position: fixed
+      bottom: 0px
+      color: white
+      display: flex
+      width: 100%
+      padding: 10px 5px
+      background-color: $colorGray
+      box-shadow: 0px 0px 10px rgba(black, 0.3)
+      .menu
+        flex: 1
+        text-align: center
+        letter-spacing: 2px
+        cursor: pointer
   .content
     padding: 0px 5px
     top: 3%

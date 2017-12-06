@@ -87,11 +87,15 @@ export default {
       border: solid 1px $colorWhite
       padding: 15px 10px
       margin-bottom: 15px
+  .winrate
   .index
     display: flex
     flex: 1
     .name
       margin-right: 10px
+    .num
+      position: absolute
+      right: 15px
   .row
     display: flex
     border-bottom: solid 1px $colorWhite

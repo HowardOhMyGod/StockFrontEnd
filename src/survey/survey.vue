@@ -123,7 +123,7 @@ export default {
       font-weight: 700
       border: solid 1px $colorWhite
       text-align: center
-      padding: 3px 5px
+      padding: 8px 5px
       margin-bottom: 15px
     .questionBlock
       margin-bottom: 15px

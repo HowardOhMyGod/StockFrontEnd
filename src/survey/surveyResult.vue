@@ -39,11 +39,13 @@ export default {
   $colorWhite: rgba(white, 0.7)
   *
     // border: solid 1px black
+    position: relative
   .surveyResult
     border: solid 1px $colorWhite
     padding: 5px 10px
     border-radius: 3px
     color: white
+    height: 100%
     .img
       width: 100%
       height: 300px
