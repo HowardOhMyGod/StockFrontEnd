@@ -7,7 +7,7 @@
         .optInfo
           .des {{variable.title}}
           select
-            option(v-for="i in [1,2,3]") {{i}}
+            option(v-for="i in variable.options") {{i}}
     .started(@click="toResult()") 開始計算
 </template>
 
@@ -16,20 +16,23 @@ export default {
   data(){
     return {
       variables: [{
+        title: '承受風險等級',
+        options: ['低', '中', '高']
+      },{
         title: 'K棒大小',
-        options: [1 ,2 ,3]
+        options: [5 ,6 ,7, 8]
       },{
         title: '當日高價與收盤價差距',
-        options: [1 ,2 ,3]
+        options: [3,2,1,0]
       },{
         title: '糾結程度',
         options: [1 ,2 ,3]
       },{
         title: '收盤價須高於幾倍的5MA',
-        options: [1 ,2 ,3]
+        options: [1,1.5,2,2.5]
       },{
         title: '成交量',
-        options: [1 ,2 ,3]
+        options: ['0 - 500', '500 - 1000', '1000 以上']
       }]
     }
   },

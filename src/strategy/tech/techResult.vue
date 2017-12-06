@@ -28,7 +28,7 @@
         .stockList(v-for="i in [1,2,3,4]")
           .roww
             .code.s 1105
-            .stockName.s 何智誠
+            .stockName.s 台積電
             .closeProce.s 253.3
 
     .trend
@@ -56,6 +56,7 @@
       .graph
         .title 走勢圖
         .img
+          img(src="http://pic.pimg.tw/check3188/4adc89cbdc8df.jpg")
 </template>
 
 <script>
@@ -119,5 +120,8 @@ export default {
       width: 100%
       height: 200px
       border: solid 1px black
+      img
+        width: 100%
+        height: 200px
 
 </style>
