@@ -1,7 +1,7 @@
 <template lang="pug">
   .techIntro
     h4.name 均線糾結向上突破
-    .img
+    img.img(src="https://firebasestorage.googleapis.com/v0/b/storesense-1a3d1.appspot.com/o/stock%2Fsticky.PNG?alt=media&token=4b50f81a-fec0-4504-8212-894e832394d5")
     .des
       .title 概念介紹
       .text 以下用"多頭市場:收盤價>5日均線>10日均線" 舉例說明. 從下圖中可看出，. 台泥(1101)在6/29起，收盤價>5日均線>10日均線，出現多頭市場。 當5日均線突破10均線時，. 那個交點稱為黃金交叉，表示應買進該檔個股。

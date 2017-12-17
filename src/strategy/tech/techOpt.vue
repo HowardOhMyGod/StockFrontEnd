@@ -3,11 +3,12 @@
     .title - 可調整參數 -
     .options
       .option(v-for="variable in variables")
-        .img
+        img.img(:src="variable.src")
         .optInfo
           .des {{variable.title}}
-          select
-            option(v-for="i in variable.options") {{i}}
+          .des.intro {{variable.des}}
+          select(v-model="options[variable.v_name]")
+            option(v-for="i in variable.options", :value="i") {{i}}
     .started(@click="toResult()") 開始計算
 </template>
 
@@ -15,24 +16,56 @@
 export default {
   data(){
     return {
+      options: {
+        k_size: 0.07,
+        up_size: 0,
+        sticky_level: 0.5,
+        sticky_days: 10,
+        volumn_big: 2,
+        volumn_size: 500,
+        risk_level: '低'
+      },
       variables: [{
         title: '承受風險等級',
-        options: ['低', '中', '高']
+        des: '根據您所填的問卷回答',
+        options: ['低', '中', '高'],
+        v_name: 'risk_level'
       },{
-        title: 'K棒大小',
-        options: [5 ,6 ,7, 8]
+        title: '紅K棒大小(%)',
+        des: '紅K棒越大代表多方勢力越強',
+        src: 'https://firebasestorage.googleapis.com/v0/b/storesense-1a3d1.appspot.com/o/stock%2F%E7%B4%85k%E6%A3%92%E5%A4%A7%E5%B0%8F.jpg?alt=media&token=73d7f7d2-00c5-452b-a46c-8804fbb4c41d',
+        options: [0.07 ,0.05 ,0.1],
+        v_name: 'k_size'
       },{
-        title: '當日高價與收盤價差距',
-        options: [3,2,1,0]
+        title: '上影線大小(元)',
+        des: '上影線越小代表多方勢力越堅定',
+        src: 'https://firebasestorage.googleapis.com/v0/b/storesense-1a3d1.appspot.com/o/stock%2F%E4%B8%8A%E5%BD%B1%E7%B7%9A%E5%A4%A7%E5%B0%8F.png?alt=media&token=932cf909-1991-48e4-b452-38b088c57448',
+        options: [0,0.5,1,2],
+        v_name: 'up_size'
       },{
-        title: '糾結程度',
-        options: [1 ,2 ,3]
+        title: '均線糾結程度(元)',
+        des: '移動平均線之間的距離，距離越小代表整理程度越高',
+        src: 'https://firebasestorage.googleapis.com/v0/b/storesense-1a3d1.appspot.com/o/stock%2F%E5%9D%87%E7%B7%9A%E7%B3%BE%E7%B5%90%E7%A8%8B%E5%BA%A6.png?alt=media&token=61e04242-758e-4fe9-b643-7f2236a23b13',
+        options: [0.5 ,1 ,2,3],
+        v_name: 'sticky_level'
       },{
-        title: '收盤價須高於幾倍的5MA',
-        options: [1,1.5,2,2.5]
+        title: '均線糾結天數',
+        des: '移動平均線糾結的時間長短，時間越長代表整理期間越久',
+        src: 'https://firebasestorage.googleapis.com/v0/b/storesense-1a3d1.appspot.com/o/stock%2F%E5%9D%87%E7%B7%9A%E7%B3%BE%E7%B5%90%E5%A4%A9%E6%95%B8.png?alt=media&token=d24dfdfa-1e88-4818-8791-1f21436aa192',
+        options: [10, 3, 5],
+        v_name: 'sticky_days'
       },{
-        title: '成交量',
-        options: ['0 - 500', '500 - 1000', '1000 以上']
+        title: '爆大量程度(倍數)',
+        des: '今日成交量與前五日之比較，倍數越高代表多方勢力越堅定',
+        src: 'https://firebasestorage.googleapis.com/v0/b/storesense-1a3d1.appspot.com/o/stock%2F%E7%88%86%E5%A4%A7%E9%87%8F%E7%A8%8B%E5%BA%A6.png?alt=media&token=24958353-d28a-44aa-ab69-7920c52c83c2',
+        options: [2, 1, 1.5, 3],
+        v_name: 'volumn_big'
+      },{
+        title: '成交張數',
+        des: '成交張數越大流動性風險越小',
+        src: 'https://firebasestorage.googleapis.com/v0/b/storesense-1a3d1.appspot.com/o/stock%2F%E6%88%90%E4%BA%A4%E9%87%8F.png?alt=media&token=c4c43d1a-ae6b-4150-892a-2f16146b8b50',
+        options: [500, 300, 1000],
+        v_name: 'volumn_size'
       }]
     }
   },
@@ -76,10 +109,11 @@ export default {
         padding: 10px 8px
         margin-bottom: 10px
         border: solid 1px $colorWhite
-        .img
+        img.img
           width: 50px
           height: 50px
           margin-right: 20px
+          border: solid 1px rgba(white, 0.3)
         .img, .optInfo
           display: inline-block
           vertical-align: middle
@@ -92,6 +126,10 @@ export default {
           font-size: 14px
           font-weight: 700
           letter-spacing: 2px
+        .des.intro
+          font-size: 12px
+          font-weight: 400
+          color: rgba(white, 0.8)
         select
           width: 100%
           padding: 2px 10px
