@@ -6,53 +6,34 @@
         .container
           .row
             .return.index
-              .name 報酬率
+              .name 平均報酬率
               .num 10
             .sharpe.index
-              .name 夏普
+              .name 勝率
               .num 10
           .row
             .holdingday.index
-              .name 持有日期
+              .name 最大正報酬
               .num 10
             .std.index
-              .name 標準差
+              .name 最小負報酬
               .num 10
           .row
             .winrate.index
-              .name 勝率
+              .name 平均持有天數
               .num 10
     .stockTable
       .title 股票推薦
       .stockBlock
+        .head
+          .column 股票代碼
+          .column 公司名稱
+          .column 今日收盤價
         .stockList(v-for="i in [1,2,3,4]")
           .roww
             .code.s 1105
             .stockName.s 台積電
             .closeProce.s 253.3
-
-    .trend
-      .title 該股指標與走勢
-      .indexList
-        .container
-          .row
-            .return.index
-              .name 報酬率
-              .num 10
-            .sharpe.index
-              .name 夏普
-              .num 10
-          .row
-            .holdingday.index
-              .name 持有日期
-              .num 10
-            .std.index
-              .name 標準差
-              .num 10
-          .row
-            .winrate.index
-              .name 勝率
-              .num 10
       .graph
         .title 走勢圖
         .img
@@ -110,11 +91,23 @@ export default {
       display: flex
       .s
         flex: 1
+        text-align: center
   .stockList:nth-child(1)
     border-top: solid 1px $colorWhite
   .stockBlock
     border-left: solid 1px $colorWhite
     border-right: solid 1px $colorWhite
+    background-color: $colorGray
+    .head
+      display: flex
+      border-top: solid 1px $colorWhite
+      border-bottom: solid 1px $colorWhite
+      padding: 2px 3px
+      background-color: $colorLightGray
+      .column
+        flex: 1
+        text-align: center
+        letter-spacing: 2px
   .graph
     .img
       width: 100%

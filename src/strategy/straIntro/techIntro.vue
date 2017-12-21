@@ -48,6 +48,7 @@ export default {
       width: 100%
       height: 300px
     .des
+      margin-top: 20px
       .title
         font-weight: 700
         text-align: center

@@ -9,7 +9,7 @@
           .des.intro {{variable.des}}
           select(v-model="options[variable.v_name]")
             option(v-for="i in variable.options", :value="i") {{i}}
-    .started(@click="toResult()") 開始計算
+    .started(@click="toResult()") 開始計算 {{options}}
 </template>
 
 <script>
@@ -22,13 +22,13 @@ export default {
         sticky_level: 0.5,
         sticky_days: 10,
         volumn_big: 2,
-        volumn_size: 500,
-        risk_level: '低'
+        volumn_size: 300,
+        risk_level: 'Mid'
       },
       variables: [{
         title: '承受風險等級',
         des: '根據您所填的問卷回答',
-        options: ['低', '中', '高'],
+        options: ['Low', 'Mid', 'High'],
         v_name: 'risk_level'
       },{
         title: '紅K棒大小(%)',
@@ -52,7 +52,7 @@ export default {
         title: '均線糾結天數',
         des: '移動平均線糾結的時間長短，時間越長代表整理期間越久',
         src: 'https://firebasestorage.googleapis.com/v0/b/storesense-1a3d1.appspot.com/o/stock%2F%E5%9D%87%E7%B7%9A%E7%B3%BE%E7%B5%90%E5%A4%A9%E6%95%B8.png?alt=media&token=d24dfdfa-1e88-4818-8791-1f21436aa192',
-        options: [10, 3, 5],
+        options: [10, 15],
         v_name: 'sticky_days'
       },{
         title: '爆大量程度(倍數)',
@@ -64,7 +64,7 @@ export default {
         title: '成交張數',
         des: '成交張數越大流動性風險越小',
         src: 'https://firebasestorage.googleapis.com/v0/b/storesense-1a3d1.appspot.com/o/stock%2F%E6%88%90%E4%BA%A4%E9%87%8F.png?alt=media&token=c4c43d1a-ae6b-4150-892a-2f16146b8b50',
-        options: [500, 300, 1000],
+        options: [300, 500, 1000],
         v_name: 'volumn_size'
       }]
     }
