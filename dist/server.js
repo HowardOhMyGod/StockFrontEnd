@@ -15,6 +15,6 @@ app.get('*', function (req, res) {
   res.render(path.join(__dirname + '/index.html'))
 })
 
-app.listen(process.env.PORT || 8000, function () {
+app.listen(process.env.PORT || 80, function () {
   console.log( 'Express serving on 8000!' )
 })

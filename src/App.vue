@@ -47,7 +47,9 @@
     width: 100%
     background-color: $colorLightGray
     .space
-      height: 55px
+      height: 80px
+      background-color: $colorLightGray
+      z-index: -1
     .downMenu
       position: fixed
       bottom: 0px

@@ -9,10 +9,11 @@
           .des.intro {{variable.des}}
           select(v-model="options[variable.v_name]")
             option(v-for="i in variable.options", :value="i") {{i}}
-    .started(@click="toResult()") 開始計算 {{options}}
+    .started(@click="toResult()") 開始計算
 </template>
 
 <script>
+import {breakCheck} from '../../request'
 export default {
   data(){
     return {
@@ -71,7 +72,8 @@ export default {
   },
   methods: {
     toResult(){
-      this.$router.push({path: '/tech/result'})
+        window.scrollTo(0,0)
+        this.$router.push({path: '/tech/result', query: this.options})
     }
   }
 }
