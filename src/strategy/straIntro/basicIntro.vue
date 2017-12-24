@@ -2,7 +2,9 @@
   .techIntro
     .description
       .title 機器學習方法應用於股價報酬之預測
-      .text  此策略主要利用機器學習方法中-隨機森林演算法，對股價報酬進行預測，以公司公布的季報財務指標為特徵值，而本季季報至下季季報公布期間之股價報酬為欲預測的值，利用上市公司自2010年開始之歷史資料進行模型訓練，並依據訓練出的模型推薦相對應的標的。此策略目前僅提供「建設、半導體IC設計、汽車組件、電子零組件連接器、資訊通路零組件代理」等五大產業之推薦標的。
+      .text {{text}}
+        span.hightlight 「建設、半導體IC設計、汽車組件、電子零組件連接器、資訊通路零組件代理」
+        span 等五大產業之推薦標的。
     .option(v-for="variable in variables")
       img.img(:src="variable.src")
       .optInfo
@@ -20,6 +22,11 @@ export default {
       options: {
         risk_level: 'Mid'
       },
+      text: `此策略主要利用機器
+      學習方法中-隨機森林演算法，對股價報酬進行預測，以公司公布的季報財務指標為特徵值，
+      而本季季報至下季季報公布期間之股價報酬為欲預測的值，利用上市公司自2010年開始之歷史資料進行模型訓練，
+      並依據訓練出的模型推薦相對應的標的。
+      此策略目前僅提供`,
       variables: [{
         title: '承受風險等級',
         des: '根據您所填的問卷回答',
@@ -31,7 +38,7 @@ export default {
   },
   methods: {
     toTechOpt(){
-      this.$router.push({path: '/tech/options'})
+      this.$router.push({path: '/basic/result'})
     }
   }
 }
@@ -45,6 +52,8 @@ export default {
 
   *
     // border: solid 1px black
+  .hightlight
+    color: $colorYellow
   .techIntro
     color: white
     height: 100%
