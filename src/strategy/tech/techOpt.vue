@@ -29,6 +29,7 @@ export default {
       variables: [{
         title: '承受風險等級',
         des: '根據您所填的問卷回答',
+        src: 'https://firebasestorage.googleapis.com/v0/b/storesense-1a3d1.appspot.com/o/stock%2Fdetail%2F%E6%89%BF%E5%8F%97%E9%A2%A8%E9%9A%AA%E7%AD%89%E7%B4%9A.png?alt=media&token=6c302ac5-0e63-4030-98a1-af7ed1b4c034',
         options: ['Low', 'Mid', 'High'],
         v_name: 'risk_level'
       },{
