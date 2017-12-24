@@ -5,6 +5,7 @@ import Strategy from './strategy/chooseStra.vue'
 import TechIntro from './strategy/straIntro/techIntro.vue'
 import TechOpt from './strategy/tech/techOpt.vue'
 import TechResult from './strategy/tech/techResult.vue'
+import BasicIntro from './strategy/straIntro/basicIntro.vue'
 
 export const routes = [{
   'path': '',
@@ -26,6 +27,9 @@ export const routes = [{
 },{
   'path': '/strategyIntro/techIntro',
   component: TechIntro
+},{
+  'path': '/strategyIntro/basicIntro',
+  component: BasicIntro
 },{
   path: '/tech/options',
   component: TechOpt
