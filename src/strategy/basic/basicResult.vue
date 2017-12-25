@@ -2,7 +2,7 @@
   .basicResult
     .loading(v-if="isnotLoad")
       h4 計算中
-    .type_select
+    .type_select(:class="{load: isnotLoad}")
       .title 產業篩選
       select(v-model="select_type")
         option(value="all", selected="selected") 全部
@@ -19,8 +19,8 @@
           .roww
             .code.s {{stock.code}}
             .stockName.s {{stock.name}}
-            .closeProce.s 854
-            .date.s 151
+            .closeProce.s {{stock.close}}
+            .date.s {{stock.date}}
 </template>
 
 <script>
@@ -119,7 +119,7 @@ export default {
       letter-spacing: 1px
   .stockTable
     margin-bottom: 15px
-  .stockTable.load
+  .stockTable.load, .type_select.load
     filter: blur(4px)
   .stockList
     border-bottom: solid 1px $colorWhite
@@ -131,6 +131,8 @@ export default {
         text-align: center
   .stockList:nth-child(1)
     border-top: solid 1px $colorWhite
+  .stockList:nth-child(odd)
+    background-color: rgba($colorLightGray, 0.6)
   .stockBlock
     border-left: solid 1px $colorWhite
     border-right: solid 1px $colorWhite

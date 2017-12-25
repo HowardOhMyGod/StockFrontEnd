@@ -161,6 +161,8 @@ export default {
         text-align: center
   .stockList:nth-child(1)
     border-top: solid 1px $colorWhite
+  .stockList:nth-child(odd)
+    background-color: rgba($colorLightGray, 0.6)
   .stockBlock
     border-left: solid 1px $colorWhite
     border-right: solid 1px $colorWhite
