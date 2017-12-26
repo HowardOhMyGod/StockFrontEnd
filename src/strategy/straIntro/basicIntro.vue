@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     toTechOpt(){
-      this.$router.push({path: '/basic/result'})
+      this.$router.push({path: '/basic/result', query: this.options})
     }
   }
 }

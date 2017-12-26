@@ -47,7 +47,7 @@ export default {
     }
   },
   created(){
-    basicResult(this, {"risk_level": "Mid"}).then((res) => {
+    basicResult(this, {"risk_level": this.$route.query.risk_level}).then((res) => {
       this.stocks = res
       this.industry_types = Object.keys(res)
     }).catch((e) => {
