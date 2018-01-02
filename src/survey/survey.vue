@@ -1,5 +1,6 @@
 <template lang="pug">
   .surveyList
+    .descri - 題目為單選題 -
     .questionBlock.col-sm-12.col-md-6(v-for="(que, idx) in questionList")
       .question {{que.title}}
       .answers
@@ -22,7 +23,7 @@ export default {
         nowSelect: -1
       },{
         title: '年均收入?',
-        options: ['五萬↓', '5~20', '20~50', '50萬↑'],
+        options: ['20萬↓', '20~80', '80~200', '200萬↑'],
         nowSelect: -1
       },{
         title: '你有多少年投資經驗?',
@@ -118,6 +119,13 @@ export default {
     #correct
       border: solid 1px $colorYellow
       color: $colorYellow
+    .descri
+      text-align: center
+      margin-top: -15px
+      margin-bottom: 15px
+      font-size: 18px
+      color: $colorYellow
+      font-weight: 500
     .sumit
       font-size: 18px
       font-weight: 700

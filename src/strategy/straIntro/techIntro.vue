@@ -4,7 +4,7 @@
     img.img(src="https://firebasestorage.googleapis.com/v0/b/storesense-1a3d1.appspot.com/o/stock%2Fdetail%2Fsticky.png?alt=media&token=f9fad6a3-6f19-464a-a42b-c74f9814c3b4")
     .des
       .title 概念介紹
-      .text 此策略主要找尋個股多空勢力態勢不明，亦即均線糾結過程中，向上突破一根上影線極小的長紅K棒，且同時帶有大成交量的股價型態。範例如上圖所示，詳細參數調整介紹將於下頁說明。黃金交叉，表示應買進該檔個股。
+      .text 此策略主要找尋個股多空勢力態勢不明，亦即均線糾結過程中，向上突破一根上影線極小的長紅K棒，且同時帶有大成交量的股價型態。範例如上圖所示，詳細參數調整介紹將於下頁說明。
     .started(@click="toTechOpt()") 開始投資!
 </template>
 

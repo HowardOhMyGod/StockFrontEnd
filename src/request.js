@@ -28,3 +28,17 @@ export const basicResult = function(self, payload) {
     })
   })
 }
+
+export const getDrawData = function(self, code) {
+  return new Promise((resolve, reject) => {
+    let vue = self
+
+    vue.$http.get(`${domain}/draw`, {params: {code}}).then((res) => {
+      if (res.status == 200){
+        resolve(res.body)
+      } else {
+        reject("Code not found!")
+      }
+    })
+  })
+}

@@ -1,78 +1,195 @@
 <template lang="pug">
-  .techResult
-    .loading(v-if="isnotLoad")
-      h4 計算中
-    .overview(:class="{load: isnotLoad}")
-      .title 策略評估指標
-      .indexList
-        .container
-          .row
-            .return.index
-              .name 平均報酬率
-              .num {{round(index.avg_rate, 2)}}
-            .sharpe.index
-              .name 勝率
-              .num {{round(index.win_rate, 2)}}
-          .row
-            .holdingday.index
-              .name 最大正報酬
-              .num {{round(index.max_pos_rate, 2)}}
-            .std.index
-              .name 最小負報酬
-              .num {{round(index.min_na_rate, 2)}}
-          .row
-            .winrate.index
-              .name 平均持有天數
-              .num {{round(index.avg_hold_days, 2)}}
-    .stockTable(:class="{load: isnotLoad}")
-      .title 股票推薦
-      .stockBlock
-        .head
-          .column 股票代碼
-          .column 公司名稱
-          .column 今日收盤價
-          .column 日期
-        .stockList(v-for="stock in passCompany")
-          .roww
-            .code.s {{stock.code}}
-            .stockName.s {{stock.name}}
-            .closeProce.s {{stock.today_close_price}}
-            .date.s {{stock.date}}
-      .graph
-        .title 走勢圖
-        .img
-          img(src="http://pic.pimg.tw/check3188/4adc89cbdc8df.jpg")
+.techResult
+	.loading(v-if="isnotLoad")
+		h4 計算中
+	.overview(:class="{load: isnotLoad}")
+		.title 近三年策略回測結果
+		.indexList
+			.container
+				.row
+					.return.index
+						.name 平均報酬率
+						.num {{round(index.avg_rate, 2)}}
+					.sharpe.index
+						.name 勝率
+						.num {{round(index.win_rate, 2)}}
+				.row
+					.holdingday.index
+						.name 最大正報酬
+						.num {{round(index.max_pos_rate, 2)}}
+					.std.index
+						.name 最小負報酬
+						.num {{round(index.min_na_rate, 2)}}
+				.row
+					.winrate.index
+						.name 平均持有天數
+						.num {{round(index.avg_hold_days, 2)}}
+	.stockTable(:class="{load: isnotLoad}")
+		.title 股票推薦
+		.stockBlock(v-if="passCompany.length > 0")
+			.head
+				.column 股票代碼
+				.column 公司名稱
+				.column 今日收盤價
+				.column 日期
+			.stockList(v-for="stock in passCompany")
+				.roww(@click="draw(stock.code)")
+					.code.s {{stock.code}}
+					.stockName.s {{stock.name}}
+					.closeProce.s {{stock.today_close_price}}
+					.date.s {{stock.date}}
+		.graph
+			#container(style="height: 400px; min-width: 310px")
 </template>
 
 <script>
-import {breakCheck} from '../../request'
+import {
+	breakCheck,
+  getDrawData
+} from '../../request'
+
+function updateGraph(res) {
+  let data = res.history
+  // split the data set into ohlc and volume
+  var ohlc = [],
+    volume = [],
+    dataLength = data.length,
+    // set the allowed units for data grouping
+    groupingUnits = [
+      [
+        'week', // unit name
+        [1] // allowed multiples
+      ],
+      [
+        'month', [1, 2, 3, 4, 6]
+      ]
+    ],
+
+    i = 0;
+
+  for (i; i < dataLength; i += 1) {
+    ohlc.push([
+      data[i][0], // the date
+      data[i][1], // open
+      data[i][2], // high
+      data[i][3], // low
+      data[i][4] // close
+    ]);
+
+    volume.push([
+      data[i][0], // the date
+      data[i][5] // the volume
+    ]);
+  }
+
+  // create the chart
+  Highcharts.stockChart('container', {
+    plotOptions: {
+      candlestick: {
+        color: 'green',
+        upColor: 'red'
+      }
+    },
+
+    rangeSelector: {
+      selected: 1
+    },
+
+    title: {
+      text: res.code
+    },
+
+    yAxis: [{
+      labels: {
+        align: 'right',
+        x: -3
+      },
+      title: {
+        text: 'OHLC'
+      },
+      height: '60%',
+      lineWidth: 2,
+      resize: {
+        enabled: true
+      }
+    }, {
+      labels: {
+        align: 'right',
+        x: -3
+      },
+      title: {
+        text: 'Volume'
+      },
+      top: '65%',
+      height: '35%',
+      offset: 0,
+      lineWidth: 2
+    }],
+
+    tooltip: {
+      split: true
+    },
+
+    series: [{
+      type: 'candlestick',
+      name: res.code,
+      data: ohlc,
+      dataGrouping: {
+        units: groupingUnits
+      }
+    }, {
+      type: 'column',
+      name: 'Volume',
+      data: volume,
+      yAxis: 1,
+      dataGrouping: {
+        units: groupingUnits
+      }
+    }]
+  });
+}
 
 export default {
-  data(){
-    return {
-      passCompany: [],
-      index: {}
+	data() {
+		return {
+			passCompany: [],
+			index: {},
+      history
+		}
+	},
+	methods: {
+		round(num, pos) {
+			var size = Math.pow(10, pos);
+			return Math.round(num * size) / size
+		},
+    draw(code){
+      window.scrollTo(0,document.querySelector(".techResult").scrollHeight)
+      getDrawData(this, code).then((res) => {
+        updateGraph(res)
+      })
     }
-  },
-  methods: {
-    round(num, pos) {
-      var size = Math.pow(10, pos);
-      return Math.round(num * size) / size
-    }
-  },
-  computed: {
-    isnotLoad(){
-      return Object.keys(this.index).length === 0
-    }
-  },
-  created(){
-    breakCheck(this, this.$route.query).then((res) => {
-      this.passCompany = res.pass_company
-      this.index = res.his_index
+	},
+	computed: {
+		isnotLoad() {
+			return Object.keys(this.index).length === 0
+		}
+	},
+	created() {
+		breakCheck(this, this.$route.query).then((res) => {
+			this.passCompany = res.pass_company
+			this.index = res.his_index
+
+      if (this.passCompany.length > 0){
+        return getDrawData(this, this.passCompany[0].code)
+      } else {
+        return Promise.reject("今日無符合型態的股票!")
+      }
+		}).then((res) => {
+      updateGraph(res)
     }).catch((e) => {
-      alert(e)
-    })
-  }
+			alert(e)
+		})
+	}
 }
 </script>
 

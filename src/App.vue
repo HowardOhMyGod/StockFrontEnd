@@ -1,7 +1,7 @@
 <template lang="pug">
   .all
     .bar
-      .topbar.col-sm-12 股票推薦神器
+      .topbar.col-sm-12 股票推薦器
     .content
       router-view
     .space
